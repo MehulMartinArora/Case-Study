@@ -1,0 +1,123 @@
+class Client {
+    abstract class Item {
+        private int idNum;
+        private String title;
+        private int numCop;
+        public int getIdNum() {
+            return idNum;
+        }
+        public void setIdNum(int idNum) {
+            this.idNum = idNum;
+        }
+        public String getTitle() {
+            return title;
+        }
+        public void setTitle(String title) {
+            this.title = title;
+        }
+        public int getNumCop() {
+            return numCop;
+        }
+        public void setNumCop(int numCop) {
+            this.numCop = numCop;
+        }
+        @Override
+        public String toString() {
+            return "Item [idNum=" + idNum + ", title=" + title + ", numCop=" + numCop + "]";
+        }
+        public void print() {
+            System.out.println("Title:"+title);
+            System.out.println("Item Number"+idNum);
+            System.out.println("Number of Copies"+numCop);
+        }
+    }
+    abstract class WrittenItem extends Item {
+        private String authorName;
+
+        public String getAuthorName() {
+            return authorName;
+        }
+
+        public void setAuthorName(String authorName) {
+            this.authorName = authorName;
+        }
+
+    }
+    class Book extends WrittenItem {
+
+    }
+    class JournalPaper extends WrittenItem {
+        private int pubyear;
+
+    }
+    abstract class MediaItem {
+        private int runTime;
+
+        public int getRunTime() {
+            return runTime;
+        }
+
+        public void setRunTime(int runTime) {
+            this.runTime = runTime;
+        }
+
+        @Override
+        public String toString() {
+            return "MediaItem [runTime=" + runTime + "]";
+        }
+
+    }
+    class Video extends MediaItem {
+        private String DirectooryName;
+        private String Genre;
+        private int relyear;
+        public void idNum(int i) {
+        }
+        public void setIdNum(int i) {
+        }
+        public void setTitle(String string) {
+        }
+        public void setNumCop(int i) {
+        }
+    }
+    class CD extends MediaItem {
+        private String artist;
+        private String genre;
+        public void setIdNum(int i) {
+        }
+        public void setTitle(String string) {
+        }
+        public void setcopynumber(int i) {
+        }
+    }
+    public static void Main (String[] args) {
+        Client clientobj=new Client();
+        Book bookobj=clientobj.new Book();
+        JournalPaper journalobj=clientobj.new JournalPaper();
+        Video videoobj=clientobj.new Video();
+        CD cdobj=clientobj.new CD();
+        bookobj.setAuthorName("JohnDoe1");
+        bookobj.setTitle("Test case study1");
+        bookobj.setNumCop(1);
+        System.out.println("book-1 author :"+bookobj.getAuthorName()+" "+bookobj.getTitle()+" "+bookobj.getNumCop());
+        System.out.println(bookobj.toString());
+        journalobj.setAuthorName("JohnDoe2");
+        journalobj.pubyear =2000;
+        journalobj.setTitle("Test case study2");
+        journalobj.setNumCop(2);
+        System.out.println("Journal 1 :"+journalobj.getAuthorName());
+        System.out.println("Year of pub :"+journalobj.pubyear);
+        System.out.println(journalobj.toString());
+        videoobj.DirectooryName ="JohnDoe3";
+        videoobj.Genre ="anyfictioon";
+        videoobj.relyear =2001;
+        videoobj.setTitle("JohnDoe4");
+        videoobj.setNumCop(4);
+        System.out.println("Name of director: "+videoobj.DirectooryName);
+        System.out.println("Genre: "+videoobj.Genre);
+        System.out.println("releasing year: "+videoobj.relyear);
+        System.out.println(videoobj.toString());
+
+    }
+
+}

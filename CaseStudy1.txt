@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+
+public class CountLettersInArray {
+
+public char[] creatArray(){
+System.out.println("Enter n ");
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+sc.nextLine();
+char input_array[] = new char[n];
+for(int i = 0; i<n;i++){
+char ch = sc.next().charAt(0);
+input_array[i]= ch;
+}
+return input_array;
+}
+
+
+void displayArray(char input_array[]){
+int count =0;
+System.out.println("Display array ");
+for(int i = 0; i< input_array.length; i++,count++){
+if(count == 20){
+System.out.println();
+count=0;
+}
+System.out.print(input_array[i]+ " ");
+}
+}
+
+public char[] distict(char input_array[]){
+char distict_array[] = new char[input_array.length];
+int n =0;
+for(int i = 0 ; i < input_array.length; i++){
+int flag =0;
+for(int j = 0 ;  j < i; j++){
+if(input_array[i]== distict_array[j]){
+flag =1;
+break;
+}
+}
+if(flag == 0){
+distict_array[index] = input_array[i];
+n++;
+}
+}
+return distict_array;
+
+}
+
+public int[] countChar(char distict_array[], char input_array[]){
+int frequency;
+int count[]= new int[distict_array.length];
+for(int i = 0;i < distict_array.length;i++){
+frequency=0;
+for(int j = 0 ; j < input_array.length; j++){
+if(input_array[j] == distict_array[i]){
+frequency++;
+}
+}
+count[i] = frequency;
+}
+
+return count;
+}
+
+void displayCount(int count[], char distict_array[]){
+System.out.println("\nCount of every elements are :-");
+for(int i = 0;i < distict_array.length; i++){
+if(count[i] == 0){
+break;
+}
+System.out.println("Count for "distict_array[i]+ " is: "+ count[i]);
+}
+}
+
+}
+
+public class FirstAssignment {
+
+public static void main(String[] args) {
+CountLettersInArray o = new CountLettersInArray();
+char input_array[]= o.creatArraay();
+o.displayArray(input_array);
+char distict_array[] = o.distict(input_array);
+int count[] = o.countChar(distict_array,input_array);
+o.displayCount(count,distict_array);
+}
+}
